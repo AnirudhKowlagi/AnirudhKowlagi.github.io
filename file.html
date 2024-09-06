@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anirudh Kowlagi - Resume</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showResume() {
+            document.getElementById('resume-section').style.display = 'block';
+            document.getElementById('contact-section').style.display = 'none';
+            document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('resume-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    
+        function showHome() {
+            document.getElementById('resume-section').style.display = 'none';
+            document.getElementById('contact-section').style.display = 'flex';
+            document.getElementById('intro-section').style.display = 'flex';
+            document.getElementById('intro-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>    
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Anirudh Kowlagi</h1>
+            <p>College Junior</p>
+            <nav>
+                <ul>
+                    <li><a href="javascript:void(0);" onclick="showHome()">HOME</a></li>
+                    <li><a href="javascript:void(0);" onclick="showResume()">RESUME</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="intro-section" class="intro">
+        <div class="profile">
+            <img src="/Users/sanjaychakrapani/Desktop/screenshot.JPG" alt="Anirudh Kowlagi">
+        </div>
+        <div class="intro-text">
+            <h2>Hello,</h2>
+            <p>a bit about me:</p>
+            <div class="resume-button">
+                <a href="javascript:void(0);" onclick="showResume()">MY RESUME</a> 
+            </div>
+            <p class="description">I am Anirudh Kowlagi, a junior studying Computational Media at Georgia Institute of Technology. Overseeing steady growth of my skillset in computer science and serving the community under my leadership is my true passion.</p>
+            <p class="description">As an enthusiastic volunteer with over 100 hours of service and countless hours of training in computer science and spoken languages, I am dedicated to give back to the community by providing quality education. Smart and 
+                capable with a compassionate heart, I am a well rounded student with interests in chess, computational media, and teaching. I am driven by my true passion to work diligently and help other students.</p>
+            <p class="description">Outside of teaching, I am committed to playing chess and competitive cricket during my free time. I am a gifted cricket batsman and an educated chess player motivated by the desire for more knowledge on the fields. 
+                I have received recognition for my excellence in chess tournaments as well as towards my academic interests. I am a dedicated individual upholding responsibilities as a student during the competitive education process at Georgia Institute of Technology, 
+                and engaged in community outreach to aid program mission centered on community support and enrichment.</p>
+        </div>
+    </section>
+    <section id="resume-section" class="resume">
+        <h2>My Resume</h2>
+        <h3>Education</h3>
+        <ul>
+            <li>Georgia Institute of Technology - Computational Media (Expected Graduation: 2026)</li>
+        </ul>
+
+        <h3>Work Experience</h3>
+        <ul>
+            <li>Innoflexion Summer Internship 2024</li>
+        </ul>
+
+        <h3>Skills</h3>
+        <ul>
+            <li>Programming Languages: Python, Java</li>
+            <li>Proficient in Unreal Engine and Blender</li>
+        </ul>
+
+        <h3>Awards and Honors</h3>
+        <ul>
+            <li>Presidents List at Georgia State University: Fall 2023 - Fall 2024</li>
+            <li>IACF Scholarship Recipient</li>
+        </ul>
+    </section>
+    <section id="contact-section" class="contact">
+        <div class="contact-item">
+            <div class="contact-icon">
+                <img src="/Users/sanjaychakrapani/Downloads/phone.png" alt="Phone Icon"> 
+            </div>
+            <div class="contact-text">
+                <h3>Call</h3>
+                <p>(470) 861 3310</p>
+            </div>
+        </div>
+        <div class="contact-item">
+            <div class="contact-icon">
+                <img src="/Users/sanjaychakrapani/Downloads/email.png" alt="Email Icon">
+            </div>
+            <div class="contact-text">
+                <h3>Contact</h3>
+                <p>akowlagi@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
