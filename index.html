@@ -10,14 +10,24 @@
             document.getElementById('resume-section').style.display = 'block';
             document.getElementById('contact-section').style.display = 'none';
             document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('projects-section').style.display = 'none';
             document.getElementById('resume-section').scrollIntoView({ behavior: 'smooth' });
         }
-    
+
         function showHome() {
             document.getElementById('resume-section').style.display = 'none';
             document.getElementById('contact-section').style.display = 'flex';
             document.getElementById('intro-section').style.display = 'flex';
+            document.getElementById('projects-section').style.display = 'none';
             document.getElementById('intro-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showProjects() {
+            document.getElementById('projects-section').style.display = 'block';
+            document.getElementById('contact-section').style.display = 'none';
+            document.getElementById('intro-section').style.display = 'none';
+            document.getElementById('resume-section').style.display = 'none';
+            document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' });
         }
     </script>    
 </head>
@@ -30,6 +40,7 @@
                 <ul>
                     <li><a href="javascript:void(0);" onclick="showHome()">HOME</a></li>
                     <li><a href="javascript:void(0);" onclick="showResume()">RESUME</a></li>
+                    <li><a href="javascript:void(0);" onclick="showProjects()">PROJECTS</a></li>
                 </ul>
             </nav>
         </div>
@@ -53,11 +64,15 @@
                 and engaged in community outreach to aid program mission centered on community support and enrichment.</p>
         </div>
     </section>
-    <section id="resume-section" class="resume">
+    
+    <section id="resume-section" class="resume" style="display:none;">
         <h2>My Resume</h2>
         <h3>Education</h3>
         <ul>
             <li>Georgia Institute of Technology - Computational Media (Expected Graduation: 2026)</li>
+            <li>Georgia State University - Computational Science (2022-2024)</li>
+            <li>Northview High School - Computational Science (2018-2022)</li>
+
         </ul>
 
         <h3>Work Experience</h3>
@@ -77,6 +92,148 @@
             <li>IACF Scholarship Recipient</li>
         </ul>
     </section>
+    
+    <section id="projects-section" class="projects" style="display:none;">
+        <h2>CSS</h2>
+        <p>HThe CSS for this project: </p>
+        <ul>
+            <li>body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+            }
+            
+            .header-content {
+                background-color: #333;
+                color: #fff;
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .header-content h1 {
+                margin: 0;
+            }
+            
+            .header-content p {
+                margin: 0;
+                font-size: 18px;
+            }
+            
+            nav ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            nav ul li {
+                display: inline;
+                margin: 0 10px;
+            }
+            
+            nav ul li a {
+                color: #fff;
+                text-decoration: none;
+            }
+            
+            nav ul li a:hover {
+                text-decoration: underline;
+            }
+            
+            .intro {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 50px 0;
+                background-color: #e2e2e2;
+            }
+            
+            .profile img {
+                width: 200px;
+                height: 300px; 
+                border-radius: 30%; 
+                margin-right: 30px;
+            }
+            
+            .intro-text {
+                max-width: 600px;
+            }
+            
+            .intro-text h2 {
+                margin-top: 0;
+            }
+            
+            .resume-button a {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 10px;
+                background-color: #333;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+            }
+            
+            .resume-button a:hover {
+                background-color: #555;
+            }
+            
+            #resume-section {
+                display: none;
+                padding: 50px;
+                background-color: #fff;
+                margin: 20px auto;
+                max-width: 800px;
+            }
+            
+            .resume h2 {
+                margin-top: 0;
+            }
+            
+            .resume h3 {
+                margin-top: 30px;
+            }
+            
+            .resume ul {
+                list-style-type: disc;
+                margin-left: 20px;
+            }
+            
+            .contact {
+                background-color: #d9534f; 
+                color: #fff; 
+                padding: 20px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+            
+            .contact-item {
+                display: flex;
+                align-items: center;
+            }
+            
+            .contact-icon img {
+                width: 50px; 
+                height: 50px; 
+                background-color: #5bc0de; 
+                padding: 10px;
+                border-radius: 50%;
+                margin-right: 15px;
+            }
+            
+            .contact-text h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            
+            .contact-text p {
+                margin: 0;
+                font-size: 16px;
+            }
+            </li>
+        </ul>
+    </section>
+
     <section id="contact-section" class="contact">
         <div class="contact-item">
             <div class="contact-icon">
