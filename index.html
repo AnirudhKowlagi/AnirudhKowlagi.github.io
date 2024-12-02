@@ -3,257 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anirudh Kowlagi - Resume</title>
-    <link rel="stylesheet" href="styles.css">
-    <script>
-        function showResume() {
-            document.getElementById('resume-section').style.display = 'block';
-            document.getElementById('contact-section').style.display = 'none';
-            document.getElementById('intro-section').style.display = 'none';
-            document.getElementById('projects-section').style.display = 'none';
-            document.getElementById('resume-section').scrollIntoView({ behavior: 'smooth' });
+    <title>Anirudh Kowlagi - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        function showHome() {
-            document.getElementById('resume-section').style.display = 'none';
-            document.getElementById('contact-section').style.display = 'flex';
-            document.getElementById('intro-section').style.display = 'flex';
-            document.getElementById('projects-section').style.display = 'none';
-            document.getElementById('intro-section').scrollIntoView({ behavior: 'smooth' });
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: #fafafa;
+            line-height: 1.6;
         }
 
-        function showProjects() {
-            document.getElementById('projects-section').style.display = 'block';
-            document.getElementById('contact-section').style.display = 'none';
-            document.getElementById('intro-section').style.display = 'none';
-            document.getElementById('resume-section').style.display = 'none';
-            document.getElementById('projects-section').scrollIntoView({ behavior: 'smooth' });
+        .nav-link {
+            position: relative;
+            text-decoration: none;
+            color: #4a5568;
+            transition: color 0.3s;
         }
-    </script>    
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4a5568;
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .tech-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+        }
+        #about-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 1rem;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-modal:hover {
+            color: black;
+        }
+        .profile-image {
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Anirudh Kowlagi</h1>
-            <p>College Junior</p>
-            <nav>
-                <ul>
-                    <li><a href="javascript:void(0);" onclick="showHome()">HOME</a></li>
-                    <li><a href="javascript:void(0);" onclick="showResume()">RESUME</a></li>
-                    <li><a href="javascript:void(0);" onclick="showProjects()">CSS File</a></li>
+    <nav class="fixed w-full bg-white/80 backdrop-blur-sm z-50 border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-xl font-bold text-gray-800">Anirudh Kowlagi</h1>
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#" id="about-link" class="nav-link">About Me</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section id="intro-section" class="intro">
-        <div class="profile">
-            <img src="screenshot.JPG" alt="Anirudh Kowlagi">
-        </div>
-        <div class="intro-text">
-            <h2>Hello,</h2>
-            <p>a bit about me:</p>
-            <div class="resume-button">
-                <a href="javascript:void(0);" onclick="showResume()">MY RESUME</a> 
             </div>
-            <p class="description">I am Anirudh Kowlagi, a junior studying Computational Media at Georgia Institute of Technology. Overseeing steady growth of my skillset in computer science and serving the community under my leadership is my true passion.</p>
-            <p class="description">As an enthusiastic volunteer with over 100 hours of service and countless hours of training in computer science and spoken languages, I am dedicated to give back to the community by providing quality education. Smart and 
-                capable with a compassionate heart, I am a well rounded student with interests in chess, computational media, and teaching. I am driven by my true passion to work diligently and help other students.</p>
-            <p class="description">Outside of teaching, I am committed to playing chess and competitive cricket during my free time. I am a gifted cricket batsman and an educated chess player motivated by the desire for more knowledge on the fields. 
-                I have received recognition for my excellence in chess tournaments as well as towards my academic interests. I am a dedicated individual upholding responsibilities as a student during the competitive education process at Georgia Institute of Technology, 
-                and engaged in community outreach to aid program mission centered on community support and enrichment.</p>
+        </div>
+    </nav>
+    <section id="home" class="pt-32 pb-20 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-12">
+                <div class="w-48 h-48 md:w-64 md:h-64 overflow-hidden">
+                    <img 
+                        src="/api/placeholder/400/400" 
+                        alt="Anirudh Kowlagi Profile Photo" 
+                        class="profile-image w-full h-full border-4 border-gray-200 shadow-lg"
+                    >
+                </div>
+                <div class="text-center md:text-left max-w-2xl">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Hello, I'm Anirudh</h1>
+                    <p class="text-xl text-gray-600">
+                        A junior at Georgia Tech studying Computational Media. I'm passionate about computer science, 
+                        teaching, and creating impactful solutions.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
-    
-    <section id="resume-section" class="resume" style="display:none;">
-        <h2>My Resume</h2>
-        <h3>Education</h3>
-        <ul>
-            <li>Georgia Institute of Technology - Computational Media (Expected Graduation: 2026)</li>
-            <li>Georgia State University - Computational Science (2022-2024)</li>
-            <li>Northview High School - Computational Science (2018-2022)</li>
-
-        </ul>
-
-        <h3>Work Experience</h3>
-        <ul>
-            <li>Innoflexion Summer Internship 2024</li>
-        </ul>
-
-        <h3>Skills</h3>
-        <ul>
-            <li>Programming Languages: Python, Java</li>
-            <li>Proficient in Unreal Engine and Blender</li>
-        </ul>
-
-        <h3>Awards and Honors</h3>
-        <ul>
-            <li>Presidents List at Georgia State University: Fall 2023 - Fall 2024</li>
-            <li>IACF Scholarship Recipient</li>
-        </ul>
-    </section>
-    
-    <section id="projects-section" class="projects" style="display:none;">
-        <h2>CSS</h2>
-        <p>The CSS for this project: </p>
-        <ul>
-            <li>body {
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-            }
-            
-            .header-content {
-                background-color: #333;
-                color: #fff;
-                padding: 20px;
-                text-align: center;
-            }
-            
-            .header-content h1 {
-                margin: 0;
-            }
-            
-            .header-content p {
-                margin: 0;
-                font-size: 18px;
-            }
-            
-            nav ul {
-                list-style-type: none;
-                padding: 0;
-            }
-            
-            nav ul li {
-                display: inline;
-                margin: 0 10px;
-            }
-            
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
-            
-            nav ul li a:hover {
-                text-decoration: underline;
-            }
-            
-            .intro {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                padding: 50px 0;
-                background-color: #e2e2e2;
-            }
-            
-            .profile img {
-                width: 200px;
-                height: 300px; 
-                border-radius: 30%; 
-                margin-right: 30px;
-            }
-            
-            .intro-text {
-                max-width: 600px;
-            }
-            
-            .intro-text h2 {
-                margin-top: 0;
-            }
-            
-            .resume-button a {
-                display: inline-block;
-                padding: 10px 20px;
-                margin-top: 10px;
-                background-color: #333;
-                color: #fff;
-                text-decoration: none;
-                border-radius: 5px;
-            }
-            
-            .resume-button a:hover {
-                background-color: #555;
-            }
-            
-            #resume-section {
-                display: none;
-                padding: 50px;
-                background-color: #fff;
-                margin: 20px auto;
-                max-width: 800px;
-            }
-            
-            .resume h2 {
-                margin-top: 0;
-            }
-            
-            .resume h3 {
-                margin-top: 30px;
-            }
-            
-            .resume ul {
-                list-style-type: disc;
-                margin-left: 20px;
-            }
-            
-            .contact {
-                background-color: #d9534f; 
-                color: #fff; 
-                padding: 20px;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-            }
-            
-            .contact-item {
-                display: flex;
-                align-items: center;
-            }
-            
-            .contact-icon img {
-                width: 50px; 
-                height: 50px; 
-                background-color: #5bc0de; 
-                padding: 10px;
-                border-radius: 50%;
-                margin-right: 15px;
-            }
-            
-            .contact-text h3 {
-                margin: 0;
-                font-size: 18px;
-                font-weight: bold;
-            }
-            
-            .contact-text p {
-                margin: 0;
-                font-size: 16px;
-            }
-            </li>
-        </ul>
-    </section>
-
-    <section id="contact-section" class="contact">
-        <div class="contact-item">
-            <div class="contact-icon">
-                <img src="phone.png" alt="Phone Icon"> 
+    <section id="projects" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">My Projects</h2>
+            <div class="project-card mb-12">
+                <div class="p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">Stocks Tracker</h3>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-2">Made with:</p>
+                                <div>
+                                    <span class="tech-tag">NodeJS</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">Yahoo API</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                The website uses trained data to predict future prices of stocks 
+                                based on sentiment analysis from the Yahoo news APIs and previous price distributions. 
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/AnirudhKowlagi/Stocks" class="btn btn-secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="/api/placeholder/600/400" alt="Stocks Tracker Preview" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="contact-text">
-                <h3>Call</h3>
-                <p>(470) xxx 3310</p>
+            <div class="project-card mb-12">
+                <div class="p-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <h3 class="text-2xl font-bold text-gray-900">SpotIt</h3>
+                            <div>
+                                <p class="text-sm text-gray-600 mb-2">Made with:</p>
+                                <div>
+                                    <span class="tech-tag">Android Studio</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Firebase</span>
+                                    <span class="tech-tag">Spotify API</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">
+                                Used Spotify API to develop an android app, which allows users to sign into their spotify account 
+                                and monitor their most viewed songs without having to wait for Spotify Wrapped.
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/AnirudhKowlagi/Spotify" class="btn btn-secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="/api/placeholder/600/400" alt="SpotIt Preview" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="contact-item">
-            <div class="contact-icon">
-                <img src="email.png" alt="Email Icon">
+    </section>
+    <section id="skills" class="py-20 px-4">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-16">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">C</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Tools</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Unreal Engine</span>
+                        <span class="tech-tag">Blender</span>
+                        <span class="tech-tag">Firebase</span>
+                    </div>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4">Soft Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-tag">Teaching</span>
+                        <span class="tech-tag">Leadership</span>
+                        <span class="tech-tag">Problem Solving</span>
+                    </div>
+                </div>
             </div>
-            <div class="contact-text">
-                <h3>Email</h3>
-                <p>akowlagi@gmail.com</p>
+        </div>
+    </section>
+    <section id="contact" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
+            <div class="space-y-4">
+                <p class="text-gray-600">
+                    Email: <a href="mailto:akowlagi@gmail.com" class="text-blue-600 hover:text-blue-800">akowlagi@gmail.com</a>
+                </p>
+                <p class="text-gray-600">
+                    Phone: (470) 861 XXXX
+                </p>
             </div>
         </div>
     </section>
 
+    <footer class="py-8 bg-white border-t border-gray-100">
+        <div class="max-w-5xl mx-auto px-4 text-center text-gray-600">
+            <p>© 2024 Anirudh Kowlagi.</p>
+        </div>
+    </footer>
+    <div id="about-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[1000] flex items-center justify-center">
+        <div class="modal-content bg-white rounded-2xl max-w-2xl mx-auto p-8 relative">
+            <span class="close-modal absolute top-4 right-4" onclick="closeModal()">&times;</span>
+            <h2 class="text-3xl font-bold mb-6 text-gray-900">About Me</h2>
+            <div class="space-y-4 text-gray-700">
+                <p>
+                    Hi there! I'm Anirudh, a junior studying Computational Media at Georgia Tech. 
+                </p>
+                <p>
+                    Aside from my coding journey, I'm deeply interested in teaching. I strived hard for student collaboration during my freetime, 
+                    where I used to tutor people of all ages. It has essentially shifted to summer only teaching due to my busy schedule, but I always look forward to teaching
+                    with my unique methods virtually. As an instructor advocating for hard working values, 
+                    I ensured the students to take up challenges and to rebound from setbacks while collaborating with others
+                    to exchange ideas as the pronounced mantra. In modern times, collaboration is the impetus of success. 
+                    I’m still as hungry as ever to keep climbing higher, in which collaboration will always be a key component. 
+                    These morals are reflected in my college and career goals, as collaboration is vastly important. 
+                </p>
+                <p>
+                    When I'm not coding or teaching, you can find me grinding a few games on chess.com, 
+                    or playing football with my buddies. 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('about-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('about-modal').style.display = 'flex';
+        });
+
+        function closeModal() {
+            document.getElementById('about-modal').style.display = 'none';
+        }
+        document.getElementById('about-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
